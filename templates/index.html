@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honor FirmCatcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .output {
+            padding: 11px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .output_fw {
+            padding: 11px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            white-space: pre-line;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Honor FirmCatcher</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="full_fw">Full FW Identifier:</label>
+                <input type="text" id="full_fw" name="full_fw" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if base %}
+        <br><strong>Requesting Info:</strong>
+            <div class="output">
+                <strong>Base:</strong> {{ base }}<br>
+                <strong>Cust:</strong> {{ cust }}<br>
+                <strong>Preload:</strong> {{ preload }}<br>
+                <strong>Region:</strong> {{ region }}<br>
+                <strong>VendorCountry:</strong> {{ vendor_country }}<br>
+            </div>
+            <br><strong>Response Info:</strong><br>
+            <div class="output_fw">{{ firmware_info | safe }}</div> 
+        {% endif %}
+    </div>
+</body>
+</html>
