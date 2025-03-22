@@ -4,6 +4,7 @@ import json
 
 devCert=""
 devSN=""
+keyAtt=""
 
 app = Flask(__name__)
 
